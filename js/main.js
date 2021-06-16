@@ -1,20 +1,4 @@
-function getRandomPositiveInteger(int1, int2) {
-  const lower = Math.ceil(Math.min(Math.abs(int1), Math.abs(int2)));
-  const upper = Math.floor(Math.max(Math.abs(int1), Math.abs(int2)));
-  const result = Math.random() * (upper - lower + 1) + lower;
-  return Math.floor(result);
-}
-
-function getRandomPositiveFloat(int1, int2, digits = 1) {
-  const lower = Math.min(Math.abs(int1), Math.abs(int2));
-  const upper = Math.max(Math.abs(int1), Math.abs(int2));
-  const result = Math.random() * (upper - lower) + lower;
-
-  return result.toFixed(digits);
-}
-
-
-const TYPE = [
+const TYPES = [
   'palace',
   'flat',
   'house',
@@ -22,13 +6,7 @@ const TYPE = [
   'hotel',
 ];
 
-const CHECKIN = [
-  '12:00',
-  '13:00',
-  '14:00',
-];
-
-const CHECKOUT = [
+const TIMES = [
   '12:00',
   '13:00',
   '14:00',
@@ -43,14 +21,31 @@ const FEATURES = [
   'conditioner',
 ];
 
-
 const PHOTOS = [
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg',
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg',
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg',
 ];
 
-const randomArray =  function getRandomArray(array) {
+const SIMILAR_AD_COUNT = 10;
+
+let avatarCounter = 0;
+
+const getRandomPositiveInteger = (int1, int2) => {
+  const lower = Math.ceil(Math.min(Math.abs(int1), Math.abs(int2)));
+  const upper = Math.floor(Math.max(Math.abs(int1), Math.abs(int2)));
+  const result = Math.random() * (upper - lower + 1) + lower;
+  return Math.floor(result);
+};
+
+const getRandomPositiveFloat = (int1, int2, digits = 1) => {
+  const lower = Math.min(Math.abs(int1), Math.abs(int2));
+  const upper = Math.max(Math.abs(int1), Math.abs(int2));
+  const result = Math.random() * (upper - lower) + lower;
+  return result.toFixed(digits);
+};
+
+const randomArray = (array) => {
   const maxLength = array.length;
   const lengthOfArray = getRandomPositiveInteger(0, maxLength - 1);
   const anyArray = [];
@@ -66,14 +61,7 @@ const randomArray =  function getRandomArray(array) {
   return anyArray;
 };
 
-
-const getRandomArrayElement = (elements) => elements[getRandomPositiveInteger(0, elements.length - 1)];
-
-const SIMILAR_AD_COUNT = 10;
-
-let avatarCounter = 0;
-
-const getUserAvatar = function () {
+const getUserAvatar =  () => {
   for (; ;) {
     if (avatarCounter < 9) {
       avatarCounter++;
@@ -83,6 +71,8 @@ const getUserAvatar = function () {
     return `img/avatars/user${avatarCounter}.png`;
   }
 };
+
+const getRandomArrayElement = (elements) => elements[getRandomPositiveInteger(0, elements.length - 1)];
 
 
 const getSimilarAd = () => {
@@ -99,11 +89,11 @@ const getSimilarAd = () => {
       title: 'Подходящий вариант для жилья',
       address: `${randomLatCoordinates},  ${randomLngCoordinates}`,
       price: getRandomPositiveInteger(0, 1000000),
-      type: randomArray(TYPE),
+      type: getRandomArrayElement(TYPES),
       rooms: getRandomPositiveInteger(1, 10),
-      guests:  getRandomPositiveInteger(1, 10),
-      checkin: getRandomArrayElement(CHECKIN),
-      checkout: getRandomArrayElement(CHECKOUT),
+      guests: getRandomPositiveInteger(1, 10),
+      checkin: getRandomArrayElement(TIMES),
+      checkout: getRandomArrayElement(TIMES),
       features: randomArray(FEATURES),
       description: 'Перед оформлением обратите внимание устраивают ли вас все детали',
       photos: randomArray(PHOTOS),
@@ -117,6 +107,6 @@ const getSimilarAd = () => {
   };
 };
 
-const createSimilarAD = new Array(SIMILAR_AD_COUNT).fill(null).map(() => getSimilarAd());
+const createSimilarAd = new Array(SIMILAR_AD_COUNT).fill(null).map(() => getSimilarAd());
 
-createSimilarAD();
+createSimilarAd;
