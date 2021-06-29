@@ -34,7 +34,7 @@ const PHOTOS = [
 ];
 
 let avatarCounter = 0;
-const SIMILAR_AD_COUNT = 10;
+const SIMILAR_AD_COUNT = 1;
 
 const getUserAvatar =  () => {
   for (; ;) {
