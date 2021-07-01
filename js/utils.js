@@ -31,7 +31,5 @@ const randomArray = (array) => {
 
 const getRandomArrayElement = (elements) => elements[getRandomPositiveInteger(0, elements.length - 1)];
 
-export {getRandomPositiveInteger};
-export {getRandomPositiveFloat};
-export {randomArray};
-export {getRandomArrayElement};
+export {getRandomPositiveInteger, getRandomPositiveFloat, randomArray, getRandomArrayElement};
+
