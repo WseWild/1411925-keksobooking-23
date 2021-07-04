@@ -1,8 +1,4 @@
-import {getRandomPositiveInteger} from '/utils.js';
-import{getRandomPositiveFloat} from '/utils.js';
-import {getRandomArrayElement} from '/utils.js';
-import {randomArray} from '/utils.js';
-
+import {getRandomPositiveInteger, getRandomPositiveFloat, getRandomArrayElement, randomArray} from './utils.js';
 
 const TYPES = [
   'palace',
@@ -33,8 +29,8 @@ const PHOTOS = [
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg',
 ];
 
-let avatarCounter = 0;
-const SIMILAR_AD_COUNT = 10;
+let avatarCounter = 2;
+const SIMILAR_AD_COUNT = 1;
 
 const getUserAvatar =  () => {
   for (; ;) {
