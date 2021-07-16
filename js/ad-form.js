@@ -13,20 +13,35 @@ const numberOfGuests = {
   NOT_FOR_GUESTS: '0',
 };
 
-
 const formTitleInput = document.querySelector('.ad-form__title');
 const formCapacity = document.querySelector('#capacity');
 const formRooms = document.querySelector('#room_number');
 const adForm = document.querySelector('.ad-form');
+const mapFilters = document.querySelector('.map__filters');
+const adFormElements = document.getElementsByClassName('ad-form__element');
+const mapFilterElements = document.getElementsByClassName('map__filter');
+const mapFeatures = document.querySelector('.map__features');
+const adFormField = document.querySelector('.ad-form-header__input');
 
+const addDisabledAttribute = (elem) => elem.setAttribute('disabled', 'disabled');
+const inactiveState = () => {
+  adForm.classList.add(`${adForm.classList}--disabled`);
+  mapFilters.classList.add(`${mapFilters.classList}--disabled`);
+  Array.from(adFormElements).forEach((element) => addDisabledAttribute(element));
+  Array.from(mapFilterElements).forEach((element) => addDisabledAttribute(element));
+  addDisabledAttribute(mapFeatures);
+  addDisabledAttribute(adFormField);
+};
+
+inactiveState();
 
 formTitleInput.addEventListener('input', () => {
   const valueLength = formTitleInput.value.length;
 
   if (valueLength < MIN_NAME_LENGTH) {
-    formTitleInput.setCustomValidity(`Ещё ${  MIN_NAME_LENGTH - valueLength } симв.`);
+    formTitleInput.setCustomValidity(`Ещё ${MIN_NAME_LENGTH - valueLength } симв.`);
   } else if (valueLength > MAX_NAME_LENGTH) {
-    formTitleInput.setCustomValidity(`Удалите лишние ${  valueLength - MAX_NAME_LENGTH } симв.`);
+    formTitleInput.setCustomValidity(`Удалите лишние ${valueLength - MAX_NAME_LENGTH } симв.`);
   } else {
     formTitleInput.setCustomValidity('');
   }
