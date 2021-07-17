@@ -1,3 +1,5 @@
+import {adForm, inactiveFormState} from './form-activity-switch.js';
+
 const MIN_NAME_LENGTH = 30;
 const MAX_NAME_LENGTH = 100;
 const numberOfRooms = {
@@ -16,24 +18,8 @@ const numberOfGuests = {
 const formTitleInput = document.querySelector('.ad-form__title');
 const formCapacity = document.querySelector('#capacity');
 const formRooms = document.querySelector('#room_number');
-const adForm = document.querySelector('.ad-form');
-const mapFilters = document.querySelector('.map__filters');
-const adFormElements = document.getElementsByClassName('ad-form__element');
-const mapFilterElements = document.getElementsByClassName('map__filter');
-const mapFeatures = document.querySelector('.map__features');
-const adFormField = document.querySelector('.ad-form-header__input');
 
-const addDisabledAttribute = (elem) => elem.setAttribute('disabled', 'disabled');
-const inactiveState = () => {
-  adForm.classList.add(`${adForm.classList}--disabled`);
-  mapFilters.classList.add(`${mapFilters.classList}--disabled`);
-  Array.from(adFormElements).forEach((element) => addDisabledAttribute(element));
-  Array.from(mapFilterElements).forEach((element) => addDisabledAttribute(element));
-  addDisabledAttribute(mapFeatures);
-  addDisabledAttribute(adFormField);
-};
-
-inactiveState();
+inactiveFormState();
 
 formTitleInput.addEventListener('input', () => {
   const valueLength = formTitleInput.value.length;

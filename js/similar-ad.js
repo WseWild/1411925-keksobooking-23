@@ -69,6 +69,6 @@ similarAd.forEach((card) => {
   similarFragment.appendChild(cardElement);
 });
 
-mapCanvas.appendChild(similarFragment);
+// mapCanvas.appendChild(similarFragment);
 
 
