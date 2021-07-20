@@ -288,7 +288,8 @@ fieldset {
           align-items: center;
 }
 
-.ad-form-header__preview {
+.ad-form-header__preview,
+.ad-form__photo {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
